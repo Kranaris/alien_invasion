@@ -16,6 +16,10 @@ def check_keydown_events(event, ship):
         ship.moving_right = True
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
+    elif event.key == pygame.K_UP:
+        ship.moving_up = True
+    elif event.key == pygame.K_DOWN:
+        ship.moving_down = True
 
 def check_keyup_events(event, ship):
     """Реагирует на отпускание клавиш"""
@@ -23,13 +27,16 @@ def check_keyup_events(event, ship):
         ship.moving_right = False
     elif event.key == pygame.K_LEFT:
         ship.moving_left = False
+    elif event.key == pygame.K_UP:
+        ship.moving_up = False
+    elif event.key == pygame.K_DOWN:
+        ship.moving_down = False
 
 def check_events(ship):
     """Обрабатывает нажатия клавиш и мыши"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-        # Переместить корабль вправо
         elif event.type == pygame.KEYDOWN:
             check_keydown_events(event, ship)
         elif event.type == pygame.KEYUP:
