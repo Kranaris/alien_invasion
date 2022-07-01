@@ -12,7 +12,7 @@ def run_game():
     pygame.display.set_caption("Alien Invasion")
 
     # Cоздание корабля
-    ship = Ship(screen)
+    ship = Ship(ai_settings, screen)
     # Запуск основного цикла игры
     while True:
         gf.check_events(ship)
