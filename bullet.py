@@ -3,7 +3,7 @@ from pygame.sprite import Sprite
 
 class Bullet(Sprite):
 
-    def __int__(self, ai_settings, screen, ship):
+    def __init__(self, ai_settings, screen, ship):
 
         super(Bullet, self).__init__()
         self.screen = screen
