@@ -1,5 +1,6 @@
 class Settings():
     """Хранение настроек"""
+
     def __init__(self):
         """Инициализирует настройки"""
         self.screen_width = 1280
@@ -9,4 +10,5 @@ class Settings():
         self.bullet_speed_factor = 0.5
         self.bullet_width = 5
         self.bullet_height = 20
-        self.bullet_color = 100, 40, 0
+        self.bullet_color = 100, 40, 20
+        self.bullet_allowed = 3
