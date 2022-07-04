@@ -13,6 +13,8 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
         if len(bullets) < ai_settings.bullet_allowed:
             new_bullet = Bullet(ai_settings, screen, ship)
             bullets.add(new_bullet)
+    elif event.key == pygame.K_q:
+        sys.exit()
 
 
 def check_keyup_events(event, ship):
@@ -35,13 +37,14 @@ def check_events(ai_settings, screen, ship, bullets):
             check_keyup_events(event, ship)
 
 
-def update_screen(ai_settings, screen, ship, bullets):
+def update_screen(ai_settings, screen, ship, alien, bullets):
     """Обновляет изображение на экране и отображает новый экран"""
     # При каждом проходе цикла прорисовывает экран
     screen.fill(ai_settings.bg_color)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
+    alien.blitme()
     # Отображение последнего прорисованного экрана.
     pygame.display.flip()
 
