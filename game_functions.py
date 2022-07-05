@@ -3,6 +3,7 @@ import pygame
 from bullet import Bullet
 from alien import Alien
 
+
 def check_keydown_events(event, ai_settings, screen, ship, bullets):
     """Реагирует на нажатие клавиш"""
     if event.key == pygame.K_RIGHT:
@@ -49,13 +50,15 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
     pygame.display.flip()
 
 
-def update_bullets(bullets):
+def update_bullets(aliens, bullets):
     """Обновляет позиции пуль и удаляет старые пули"""
     bullets.update()
     # Удаление пуль
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+
 
 def create_alien(ai_settings, screen, aliens, alien_numebr, row_number):
     """Creating aliens fleet"""
@@ -73,6 +76,7 @@ def get_number_aliens_x(ai_settings, alien_width):
     number_aliens_x = int(avalible_space_x / (2 * alien_width))
     return number_aliens_x
 
+
 def create_fleet(ai_settings, screen, ship, aliens):
     """making fleet"""
     alien = Alien(ai_settings, screen)
@@ -82,16 +86,19 @@ def create_fleet(ai_settings, screen, ship, aliens):
         for alien_number in range(number_aliens_x):
             create_alien(ai_settings, screen, aliens, alien_number, row_number)
 
+
 def get_number_rows(ai_settings, ship_height, alien_height):
     """counting the number of rows"""
     avalible_space_y = (ai_settings.screen_height - (3 * alien_height) - ship_height)
     number_rows = int(avalible_space_y / (2 * alien_height))
     return number_rows
 
+
 def update_aliens(ai_settings, aliens):
     """Updating positions in fleet"""
     check_fleet_edges(ai_settings, aliens)
     aliens.update()
+
 
 def check_fleet_edges(ai_settings, aliens):
     """Reaction to aliens reaching the edge of the screen"""
@@ -99,6 +106,7 @@ def check_fleet_edges(ai_settings, aliens):
         if alien.check_edges():
             change_fleet_direction(ai_settings, aliens)
             break
+
 
 def change_fleet_direction(ai_settings, aliens):
     """Downing fleet"""
