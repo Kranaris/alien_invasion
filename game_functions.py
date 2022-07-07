@@ -18,7 +18,6 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
     elif event.key == pygame.K_q:
         sys.exit()
 
-
 def check_keyup_events(event, ship):
     """Реагирует на отпускание клавиш"""
     if event.key == pygame.K_RIGHT:
@@ -45,6 +44,7 @@ def check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bul
     if play_button.rect.collidepoint(mouse_x, mouse_y):
         button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
         if button_clicked and not stats.game_active:
+            ai_settings.initialize_dynamic_settings()
             pygame.mouse.set_visible(False)
             stats.reset_stats()
             stats.game_active = True
@@ -140,6 +140,10 @@ def change_fleet_direction(ai_settings, aliens):
 
 def check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets):
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+    if len(aliens) == 0:
+        bullets.empty()
+        ai_settings.increase_speed()
+        create_fleet(ai_settings, screen, ship, aliens)
 
 def ship_hit(ai_settings, screen, stats, ship, aliens, bullets):
     if stats.ships_left > 0:
