@@ -9,7 +9,7 @@ class Settings():
         # Ship
         self.ship_limit = 3
         # Bullets
-        self.bullet_width = 500
+        self.bullet_width = 5
         self.bullet_height = 15
         self.bullet_color = 100, 40, 20
         self.bullet_allowed = 3
