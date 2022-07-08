@@ -20,6 +20,7 @@ def run_game():
     gf.create_fleet(ai_settings, screen, ship, aliens)
     stats = GameStats(ai_settings)
     sb = Scoreboard(ai_settings, screen, stats)
+
     # Запуск основного цикла игры
     while True:
         gf.check_events(ai_settings, screen, stats, play_button, ship, aliens, bullets)
