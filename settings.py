@@ -14,7 +14,7 @@ class Settings():
         self.bullet_color = 100, 40, 20
         self.bullet_allowed = 3
         # Aliens
-        self.fleet_drop_speed = 15
+        self.fleet_drop_speed = 100
         #speedup game factor
         self.speedup_scale = 1.2
         self.score_scale = 1.5
@@ -25,11 +25,10 @@ class Settings():
         self.bullet_speed_factor = 3
         self.alien_speed_factor = 1
         self.fleet_direction = 1  # "1" - right, "-1" left
-        self.alien_points = 1
+        self.alien_points = 50
 
     def increase_speed(self):
         self.ship_speed_factor *= self.speedup_scale
         self.bullet_speed_factor *= self.speedup_scale
         self.alien_speed_factor *= self.speedup_scale
         self.alien_points = int(self.alien_points * self.score_scale)
-        print(self.alien_points)

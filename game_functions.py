@@ -77,9 +77,6 @@ def update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets):
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
     check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, bullets)
-    if len(aliens) == 0:
-        bullets.empty()
-        create_fleet(ai_settings, screen, ship, aliens)
 
 
 def create_alien(ai_settings, screen, aliens, alien_numebr, row_number):
@@ -121,7 +118,7 @@ def update_aliens(ai_settings, stats, screen, ship, aliens, bullets):
     check_fleet_edges(ai_settings, aliens)
     aliens.update()
     if pygame.sprite.spritecollideany(ship, aliens):
-        ship_hit(ai_settings,screen, stats, ship, aliens, bullets)
+        ship_hit(ai_settings,stats, screen, ship, aliens, bullets)
     check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets)
 
 def check_fleet_edges(ai_settings, aliens):
@@ -144,13 +141,13 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, 
     if collisions:
         for aliens in collisions.values():
             stats.score += ai_settings.alien_points * len(aliens)
-            sb.prep_score()
+    sb.prep_score()
     if len(aliens) == 0:
         bullets.empty()
         ai_settings.increase_speed()
         create_fleet(ai_settings, screen, ship, aliens)
 
-def ship_hit(ai_settings, screen, stats, ship, aliens, bullets):
+def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
     if stats.ships_left > 0:
         stats.ships_left -= 1
         aliens.empty()
