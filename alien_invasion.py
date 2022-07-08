@@ -7,6 +7,7 @@ from game_stat import GameStats
 from button import Button
 from scoreboard import Scoreboard
 
+
 def run_game():
     # Инициализирует игру и создает объект экрана.
     pygame.init()

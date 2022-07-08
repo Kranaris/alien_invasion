@@ -15,7 +15,7 @@ class Settings():
         self.bullet_allowed = 3
         # Aliens
         self.fleet_drop_speed = 100
-        #speedup game factor
+        # speedup game factor
         self.speedup_scale = 1.2
         self.score_scale = 1.5
         self.initialize_dynamic_settings()
