@@ -24,7 +24,7 @@ class Scoreboard:
     def prep_score(self):
         """Turn the score into a rendered image."""
         rounded_score = round(self.stats.score, -1)
-        score_str = "{:,}".format(rounded_score)
+        score_str = "S: {:,}".format(rounded_score)
         self.score_image = self.font.render(score_str, True, self.text_color, self.ai_settings.bg_color)
 
         # Display the score at the top right of the screen.
@@ -35,7 +35,7 @@ class Scoreboard:
     def prep_high_score(self):
         """Turn the high score into a rendered image."""
         high_score = round(self.stats.high_score, -1)
-        high_score_str = "{:,}".format(high_score)
+        high_score_str = "Record: {:,}".format(high_score)
         self.high_score_image = self.font.render(high_score_str, True, self.text_color, self.ai_settings.bg_color)
 
         self.high_score_rect = self.high_score_image.get_rect()
@@ -50,7 +50,8 @@ class Scoreboard:
         self.ships.draw(self.screen)
 
     def prep_level(self):
-        self.level_image = self.font.render(str(self.stats.level), True, self.text_color, self.ai_settings.bg_color)
+        self.level = f"L: {self.stats.level}".format()
+        self.level_image = self.font.render(str(self.level), True, self.text_color, self.ai_settings.bg_color)
         self.level_rect = self.level_image.get_rect()
         self.level_rect.right = self.score_rect.right
         self.level_rect.top = self.score_rect.bottom + 10
