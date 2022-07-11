@@ -5,16 +5,16 @@ class Settings():
         """Инициализирует настройки"""
         self.screen_width = 1200
         self.screen_height = 800
-        self.bg_color = (95, 100, 110)
+        self.bg_color = (148, 148, 148)
         # Ship
         self.ship_limit = 3
         # Bullets
         self.bullet_width = 5
         self.bullet_height = 15
-        self.bullet_color = 100, 40, 20
+        self.bullet_color = 150, 40, 20
         self.bullet_allowed = 3
         # Aliens
-        self.fleet_drop_speed = 200
+        self.fleet_drop_speed = 15
         # speedup game factor
         self.speedup_scale = 1.2
         self.score_scale = 1.5
